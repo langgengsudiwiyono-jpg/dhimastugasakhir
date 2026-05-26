@@ -38,7 +38,7 @@
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    text-decoration: none; /* Tambahan untuk tag <a> */
+    text-decoration: none; /* Tambahan agar tag <a> tidak bergaris bawah */
 }
 
 .neu-login-btn::before {
