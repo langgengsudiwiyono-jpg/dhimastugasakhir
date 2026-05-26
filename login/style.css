@@ -1,12 +1,88 @@
-/* Neumorphism Login Form - Complete & Self-Contained */
+/* ============================================
+   NEUMORPHISM STYLES
+   ============================================ */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* --- Layout Header Utama (agar tombol di bawah judul) --- */
+.tm-site-header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
 
-body {
+.tm-site-header-left .tm-site-top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- Tombol Login di Halaman Utama --- */
+.neu-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #e0e5ec;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 28px;
+    color: #3d4468;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        6px 6px 14px #bec3cf,
+        -6px -6px 14px #ffffff;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none; /* Tambahan untuk tag <a> */
+}
+
+.neu-login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transition: left 0.5s ease;
+}
+
+.neu-login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        10px 10px 24px #bec3cf,
+        -10px -10px 24px #ffffff;
+    color: #3d4468;
+}
+
+.neu-login-btn:hover::before {
+    left: 100%;
+}
+
+.neu-login-btn:active {
+    transform: translateY(0);
+    box-shadow:
+        inset 3px 3px 8px #bec3cf,
+        inset -3px -3px 8px #ffffff;
+}
+
+.neu-login-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.neu-login-btn:hover svg {
+    transform: scale(1.15);
+}
+
+/* --- Halaman Login (Body Centering) --- */
+body.login-page {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #e0e5ec;
     min-height: 100vh;
@@ -15,8 +91,10 @@ body {
     justify-content: center;
     padding: 20px;
     line-height: 1.6;
+    margin: 0;
 }
 
+/* --- Login Card & Container --- */
 .login-container {
     width: 100%;
     max-width: 420px;
@@ -26,7 +104,7 @@ body {
     background: #e0e5ec;
     border-radius: 30px;
     padding: 50px 40px;
-    box-shadow: 
+    box-shadow:
         20px 20px 60px #bec3cf,
         -20px -20px 60px #ffffff;
     position: relative;
@@ -37,6 +115,23 @@ body {
     transform: translateY(-5px);
 }
 
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #9499b7;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #3d4468;
+}
+
+/* --- Login Header --- */
 .login-header {
     text-align: center;
     margin-bottom: 40px;
@@ -51,16 +146,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 
+    box-shadow:
         8px 8px 20px #bec3cf,
-        -8px -8px 20px #ffffff,
-        inset 0 0 0 #bec3cf,
-        inset 0 0 0 #ffffff;
+        -8px -8px 20px #ffffff;
     transition: all 0.3s ease;
 }
 
 .neu-icon:hover {
-    box-shadow: 
+    box-shadow:
         4px 4px 10px #bec3cf,
         -4px -4px 10px #ffffff,
         inset 4px 4px 10px #bec3cf,
@@ -94,7 +187,7 @@ body {
     font-weight: 400;
 }
 
-/* Neumorphic Input Styles */
+/* --- Neumorphic Inputs --- */
 .form-group {
     margin-bottom: 28px;
     position: relative;
@@ -104,14 +197,14 @@ body {
     position: relative;
     background: #e0e5ec;
     border-radius: 15px;
-    box-shadow: 
+    box-shadow:
         inset 8px 8px 16px #bec3cf,
         inset -8px -8px 16px #ffffff;
     transition: all 0.3s ease;
 }
 
 .neu-input:focus-within {
-    box-shadow: 
+    box-shadow:
         inset 4px 4px 8px #bec3cf,
         inset -4px -4px 8px #ffffff;
 }
@@ -127,6 +220,7 @@ body {
     font-weight: 500;
     outline: none;
     transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .neu-input input::placeholder {
@@ -173,7 +267,7 @@ body {
     color: #6c7293;
 }
 
-/* Password Toggle */
+/* --- Password Toggle --- */
 .password-group {
     padding-right: 50px;
 }
@@ -193,40 +287,27 @@ body {
     align-items: center;
     justify-content: center;
     color: #9499b7;
-    box-shadow: 
+    box-shadow:
         4px 4px 10px #bec3cf,
         -4px -4px 10px #ffffff;
     transition: all 0.3s ease;
 }
 
-.neu-toggle:hover {
-    color: #6c7293;
-}
+.neu-toggle:hover { color: #6c7293; }
 
 .neu-toggle:active {
-    box-shadow: 
+    box-shadow:
         inset 2px 2px 5px #bec3cf,
         inset -2px -2px 5px #ffffff;
 }
 
-.neu-toggle svg {
-    width: 18px;
-    height: 18px;
-}
+.neu-toggle svg { width: 18px; height: 18px; }
 
-.eye-closed {
-    display: none;
-}
+.eye-closed { display: none; }
+.neu-toggle.show-password .eye-open { display: none; }
+.neu-toggle.show-password .eye-closed { display: block; }
 
-.neu-toggle.show-password .eye-open {
-    display: none;
-}
-
-.neu-toggle.show-password .eye-closed {
-    display: block;
-}
-
-/* Form Options */
+/* --- Form Options --- */
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -242,9 +323,7 @@ body {
     cursor: pointer;
 }
 
-.remember-wrapper input[type="checkbox"] {
-    display: none;
-}
+.remember-wrapper input[type="checkbox"] { display: none; }
 
 .checkbox-label {
     display: flex;
@@ -265,16 +344,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 
+    box-shadow:
         3px 3px 8px #bec3cf,
         -3px -3px 8px #ffffff;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .remember-wrapper input[type="checkbox"]:checked + .checkbox-label .neu-checkbox {
-    box-shadow: 
+    box-shadow:
         inset 2px 2px 5px #bec3cf,
         inset -2px -2px 5px #ffffff;
 }
@@ -301,11 +378,9 @@ body {
     transition: color 0.3s ease;
 }
 
-.forgot-link:hover {
-    color: #3d4468;
-}
+.forgot-link:hover { color: #3d4468; }
 
-/* Neumorphic Button */
+/* --- Neumorphic Submit Button --- */
 .neu-button {
     width: 100%;
     background: #e0e5ec;
@@ -315,10 +390,11 @@ body {
     color: #3d4468;
     font-size: 16px;
     font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
     cursor: pointer;
     position: relative;
     margin-bottom: 30px;
-    box-shadow: 
+    box-shadow:
         8px 8px 20px #bec3cf,
         -8px -8px 20px #ffffff;
     transition: all 0.3s ease;
@@ -332,24 +408,22 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
     transition: left 0.5s ease;
 }
 
 .neu-button:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
         12px 12px 30px #bec3cf,
         -12px -12px 30px #ffffff;
 }
 
-.neu-button:hover::before {
-    left: 100%;
-}
+.neu-button:hover::before { left: 100%; }
 
 .neu-button:active {
     transform: translateY(0);
-    box-shadow: 
+    box-shadow:
         inset 4px 4px 10px #bec3cf,
         inset -4px -4px 10px #ffffff;
 }
@@ -383,15 +457,10 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-.neu-button.loading .btn-text {
-    opacity: 0;
-}
+.neu-button.loading .btn-text { opacity: 0; }
+.neu-button.loading .btn-loader { opacity: 1; }
 
-.neu-button.loading .btn-loader {
-    opacity: 1;
-}
-
-/* Divider */
+/* --- Divider --- */
 .divider {
     display: flex;
     align-items: center;
@@ -413,7 +482,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* Social Login */
+/* --- Social Login --- */
 .social-login {
     display: flex;
     justify-content: center;
@@ -432,7 +501,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #6c7293;
-    box-shadow: 
+    box-shadow:
         6px 6px 15px #bec3cf,
         -6px -6px 15px #ffffff;
     transition: all 0.3s ease;
@@ -440,45 +509,32 @@ body {
 
 .neu-social:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
         8px 8px 20px #bec3cf,
         -8px -8px 20px #ffffff;
 }
 
 .neu-social:active {
     transform: translateY(0);
-    box-shadow: 
+    box-shadow:
         inset 3px 3px 8px #bec3cf,
         inset -3px -3px 8px #ffffff;
 }
 
-.neu-social svg {
-    width: 22px;
-    height: 22px;
-}
+.neu-social svg { width: 22px; height: 22px; }
 
-/* Signup Link */
-.signup-link {
-    text-align: center;
-}
-
-.signup-link p {
-    color: #9499b7;
-    font-size: 14px;
-}
-
+/* --- Signup Link --- */
+.signup-link { text-align: center; }
+.signup-link p { color: #9499b7; font-size: 14px; margin: 0; }
 .signup-link a {
     color: #6c7293;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
+.signup-link a:hover { color: #3d4468; }
 
-.signup-link a:hover {
-    color: #3d4468;
-}
-
-/* Error States */
+/* --- Error States --- */
 .error-message {
     color: #ff3b5c;
     font-size: 12px;
@@ -496,13 +552,13 @@ body {
 }
 
 .form-group.error .neu-input {
-    box-shadow: 
+    box-shadow:
         inset 8px 8px 16px #ffb8c4,
         inset -8px -8px 16px #ffffff,
         0 0 0 2px #ff3b5c;
 }
 
-/* Success Message */
+/* --- Success Message --- */
 .success-message {
     display: none;
     text-align: center;
@@ -519,7 +575,6 @@ body {
 }
 
 .success-message .neu-icon {
-    background: #e0e5ec;
     color: #00c896;
     margin-bottom: 20px;
 }
@@ -530,38 +585,27 @@ body {
     margin-bottom: 8px;
 }
 
-.success-message p {
-    color: #9499b7;
-    font-size: 14px;
-}
+.success-message p { color: #9499b7; font-size: 14px; }
 
-/* Mobile Responsive */
+/* --- Mobile Responsive --- */
 @media (max-width: 480px) {
-    body {
-        padding: 16px;
-    }
-    
     .login-card {
         padding: 35px 25px;
         border-radius: 20px;
     }
-    
-    .login-header h2 {
-        font-size: 1.75rem;
-    }
-    
+    .login-header h2 { font-size: 1.75rem; }
     .neu-input input {
         padding: 18px 20px;
         padding-left: 50px;
     }
-    
-    .neu-input label {
-        left: 50px;
-    }
-    
+    .neu-input label { left: 50px; }
     .form-options {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
+    }
+    .neu-login-btn {
+        padding: 8px 20px;
+        font-size: 12px;
     }
 }
