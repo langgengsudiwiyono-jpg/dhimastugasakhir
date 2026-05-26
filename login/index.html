@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neumorphism Login Form</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - New Gen Researcher</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
+    <!-- Panggil CSS Style Neumorphism -->
+    <link href="css/style.css" rel="stylesheet" />
 </head>
-<body>
+<body class="login-page">
     <div class="login-container">
         <div class="login-card">
+            
+            <!-- Tombol kembali ke halaman utama -->
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali ke Beranda
+            </a>
+
             <div class="login-header">
                 <div class="neu-icon">
                     <div class="icon-inner">
@@ -21,7 +34,7 @@
                 <h2>Welcome back</h2>
                 <p>Please sign in to continue</p>
             </div>
-            
+
             <form class="login-form" id="loginForm" novalidate>
                 <div class="form-group">
                     <div class="input-group neu-input">
@@ -127,7 +140,98 @@
         </div>
     </div>
 
-    <script src="../../shared/js/form-utils.js"></script>
-    <script src="script.js"></script>
+    <!-- Script Khusus Halaman Login -->
+    <script>
+        // Toggle Password Visibility
+        var toggle = document.getElementById('passwordToggle');
+        var pwField = document.getElementById('password');
+        
+        toggle.addEventListener('click', function() {
+            toggle.classList.toggle('show-password');
+            pwField.type = toggle.classList.contains('show-password') ? 'text' : 'password';
+        });
+
+        // Form Validation
+        var form = document.getElementById('loginForm');
+        var emailInput = document.getElementById('email');
+        var emailErr = document.getElementById('emailError');
+        var pwErr = document.getElementById('passwordError');
+        var submitBtn = form.querySelector('.neu-button');
+
+        function showError(group, errEl, msg) {
+            group.classList.add('error');
+            errEl.textContent = msg;
+            errEl.classList.add('show');
+        }
+
+        function clearError(group, errEl) {
+            group.classList.remove('error');
+            errEl.classList.remove('show');
+        }
+
+        emailInput.addEventListener('input', function() {
+            clearError(emailInput.closest('.form-group'), emailErr);
+        });
+
+        pwField.addEventListener('input', function() {
+            clearError(pwField.closest('.form-group'), pwErr);
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var valid = true;
+
+            var emailVal = emailInput.value.trim();
+            var emailGroup = emailInput.closest('.form-group');
+
+            if (!emailVal) {
+                showError(emailGroup, emailErr, 'Email wajib diisi');
+                valid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+                showError(emailGroup, emailErr, 'Format email tidak valid');
+                valid = false;
+            } else {
+                clearError(emailGroup, emailErr);
+            }
+
+            var pwVal = pwField.value;
+            var pwGroup = pwField.closest('.form-group');
+
+            if (!pwVal) {
+                showError(pwGroup, pwErr, 'Password wajib diisi');
+                valid = false;
+            } else if (pwVal.length < 6) {
+                showError(pwGroup, pwErr, 'Minimal 6 karakter');
+                valid = false;
+            } else {
+                clearError(pwGroup, pwErr);
+            }
+
+            if (!valid) return;
+
+            // Simulasi Loading
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            setTimeout(function() {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                
+                // Tampilkan pesan sukses
+                form.style.display = 'none';
+                document.querySelector('.divider').style.display = 'none';
+                document.querySelector('.social-login').style.display = 'none';
+                document.querySelector('.signup-link').style.display = 'none';
+                
+                var success = document.getElementById('successMessage');
+                success.classList.add('show');
+
+                // Redirect kembali setelah 2 detik
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
