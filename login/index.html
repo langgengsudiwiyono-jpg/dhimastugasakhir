@@ -6,7 +6,7 @@
     <title>Login - New Gen Researcher</title>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" />
-    <!-- Panggil CSS Style Neumorphism -->
+    <!-- Panggil file CSS terpisah -->
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body class="login-page">
@@ -142,7 +142,7 @@
 
     <!-- Script Khusus Halaman Login -->
     <script>
-        // Toggle Password Visibility
+        // Toggle Password
         var toggle = document.getElementById('passwordToggle');
         var pwField = document.getElementById('password');
         
@@ -151,7 +151,7 @@
             pwField.type = toggle.classList.contains('show-password') ? 'text' : 'password';
         });
 
-        // Form Validation
+        // Validasi & Submit Form
         var form = document.getElementById('loginForm');
         var emailInput = document.getElementById('email');
         var emailErr = document.getElementById('emailError');
@@ -226,7 +226,7 @@
                 var success = document.getElementById('successMessage');
                 success.classList.add('show');
 
-                // Redirect kembali setelah 2 detik
+                // Redirect kembali ke halaman utama setelah sukses
                 setTimeout(function() {
                     window.location.href = 'index.html';
                 }, 2000);
